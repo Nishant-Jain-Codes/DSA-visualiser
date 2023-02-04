@@ -1,0 +1,32 @@
+{
+  "name": "dsa-visualiser",
+  "version": "1.0.0",
+  "description": "data structure and algorithm visualiser college 2nd year mini porject ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nishant-Jain-Codes/DSA-visualiser.git"
+  },
+  "keywords": [
+    "data",
+    "structure",
+    "algorithm",
+    "recursion",
+    "sorting",
+    "searching",
+    "linked",
+    "list",
+    "tree",
+    "stack",
+    "queue"
+  ],
+  "author": "Nishant Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nishant-Jain-Codes/DSA-visualiser/issues"
+  },
+  "homepage": "https://github.com/Nishant-Jain-Codes/DSA-visualiser#readme"
+}
