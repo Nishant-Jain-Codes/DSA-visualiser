@@ -11,6 +11,10 @@ header {
     letter-spacing: 0.1vw;
     word-spacing: 0.15vw;
     font-weight: 380; }
+  header span:hover {
+    opacity: 1;
+    font-weight: 450;
+    color: white; }
   header i {
     padding: 0 1vw 0 1vw;
     opacity: 0.6; }
