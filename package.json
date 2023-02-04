@@ -4,7 +4,16 @@
   "description": "data structure and algorithm visualiser college 2nd year mini porject ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.11.0",
+    "ejs": "^3.1.8",
+    "express-ejs-layouts": "^2.5.1",
+    "node-sass-middleware": "^1.0.1",
+    "node-sass": "^8.0.0"
   },
   "repository": {
     "type": "git",
