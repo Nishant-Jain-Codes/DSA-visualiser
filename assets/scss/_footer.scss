@@ -1,0 +1,21 @@
+footer{
+    height: 5vh;
+    background-color: #20262E;
+    color: #E9E8E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+        opacity: 0.7;
+    }
+    ul{
+        padding-left: 2vw;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        li{
+            padding: 0 0.5vw 0 0.5vw;
+            font-size: 3vh;
+        }
+    }
+}

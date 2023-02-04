@@ -1,0 +1,16 @@
+header{
+    height: 5vh;
+    background-color: #20262E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E9E8E8;
+    font-size: 3vh;
+    i{
+        padding: 0 1vw 0 1vw;
+        opacity: 0.6;
+    }
+}
+header:hover{
+    cursor:pointer;
+}
