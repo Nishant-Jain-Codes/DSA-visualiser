@@ -1,3 +1,7 @@
+//TODO make the code cleaner 
+    //divide the code into funcitons 
+    //write code for binary search 
+
 //IIFE
 (function(){
     const input = $('#fname');
