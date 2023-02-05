@@ -13,6 +13,28 @@
         width: 100%;
         height: 40%;
         #controls{
+            input{
+                width: 70%;
+                margin: 10%;
+                padding: 3%;
+                font-size: 3vw;
+            }
+            #different-algos{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                button{
+                    margin: 2%;
+                    padding: 3%;
+                    font-size: 2vw;
+                }
+            }
+            // button{
+            //     width: 30%;
+            //     text-align: center;
+            //     margin: 5%;
+            //     padding: 5%;
+            // }
             height: 100%;
             width: 50%;
             background-color: red;
