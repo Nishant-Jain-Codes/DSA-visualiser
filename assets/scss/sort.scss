@@ -1,0 +1,26 @@
+#search-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    #algorithm-visualization{
+        width: 100%;
+        height: 60%;
+        background-color: blue;
+    }
+    #controls-and-callstack{
+        display: flex;
+        width: 100%;
+        height: 40%;
+        #controls{
+            height: 100%;
+            width: 50%;
+            background-color: red;
+        }
+        #call-stack-visualization{
+            height: 100%;
+            width: 50%;
+            background-color: green;
+        }
+    }
+}
