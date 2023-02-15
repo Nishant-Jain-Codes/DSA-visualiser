@@ -1,23 +1,21 @@
 //TODO make the code cleaner 
     //divide the code into funcitons 
-    //write code for binary search 
+
 
 //IIFE
 (function(){
     const input = $('#fname');
     const container = $('#array');
     function generateArray(sorted){
-        console.log('function called ')
         container.empty();
         let arr=[];
         for(let i=0;i<20;i++){
             arr.push(Math.ceil(Math.random() * 100));
         }
-        console.log('array: ',arr);
+
         if(sorted)
             {
                 arr.sort((a, b)=>{return a - b});
-                console.log('sorted arr',arr);
             }
         for(let i=0;i<20;i++){
             let value = arr[i];
