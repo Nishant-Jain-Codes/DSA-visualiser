@@ -6,10 +6,21 @@
 (function(){
     const input = $('#fname');
     const container = $('#array');
-    function generateArray(){
+    function generateArray(sorted){
+        console.log('function called ')
         container.empty();
+        let arr=[];
         for(let i=0;i<20;i++){
-            let value = Math.ceil(Math.random() * 100);
+            arr.push(Math.ceil(Math.random() * 100));
+        }
+        console.log('array: ',arr);
+        if(sorted)
+            {
+                arr.sort((a, b)=>{return a - b});
+                console.log('sorted arr',arr);
+            }
+        for(let i=0;i<20;i++){
+            let value = arr[i];
             let array_ele = document.createElement("div");
             array_ele.classList.add('block');
             array_ele.style.height = `${value * 3}px`;
@@ -22,9 +33,10 @@
         }
     }
     async function linearSearchVisualization(to_find,delay=300){
-        generateArray();
-        let blocks = $('.block');
+        
+        let blocks = document.querySelectorAll('.block');
         let output = document.getElementById('output');
+        //console.log(blocks);
         let num = to_find;
         output.innerText = "";
         let flag = 0;
@@ -54,8 +66,43 @@
           output.innerText = "Element Not Found";
         }
     }
-    function binarySearchVisualization(to_find){
-
+    async function binarySearchVisualization(to_find,delay=600){
+        
+        let blocks = document.querySelectorAll('.block');
+        let output = document.getElementById('output');
+        let num = to_find;
+        output.innerText = "";
+        let flag = 0;
+        // BinarySearch Algorithm
+        let si=0,ei=blocks.length-1;
+        console.log('blocks ',blocks)
+        while(si<=ei) {
+         let mid = Math.floor(si + ((ei-si)/2));
+          blocks[mid].style.backgroundColor = "#FF4949";
+          await new Promise((resolve) =>
+            setTimeout(() => {
+              resolve();
+            }, delay)
+          );
+        
+        let value = Number(blocks[mid].childNodes[0].innerHTML);
+        if (value == num) {
+            flag = 1;
+            output.innerText = "Element Found";
+            blocks[mid].style.backgroundColor = "#13CE66";
+            break;
+          } else {
+            blocks[mid].style.backgroundColor = "#6b5b95";
+            if (value > num)
+                ei=mid-1;
+            else 
+                si = mid+1;
+        }
+        }
+        //When element is not found in the array
+        if (flag == 0) {
+          output.innerText = "Element Not Found";
+        }
     }
     function noInputGivenAlert(){
         input.css("border-color","red");
@@ -65,15 +112,23 @@
         input.css("border-color","green");
         input.attr('placeholder','No. to search')
     }
-    function handleInputClick(event){
+    async function handleInputClick(event){
         let target_id = event.target.id;
         let currentInputVal = parseInt(input.val());
+
         if(currentInputVal){
             inputBoxReset();
             if(target_id==='linear-search'){
+                generateArray(false);
                 linearSearchVisualization(currentInputVal);
             }
             else if(target_id==='binary-search'){
+                generateArray(true);
+                await new Promise((resolve) =>
+                setTimeout(() => {
+                resolve();
+                }, 500)
+                );
                 binarySearchVisualization(currentInputVal);
             }
         }
