@@ -23,17 +23,18 @@
             container.appendChild(array_ele);
         }
     }
-     function swapBubble(ele1,ele2){
+     function swap(ele1,ele2){
         return  new Promise((resolve)=>{
-            var temp = ele1.style.transform;
-            ele1.style.transform = ele2.style.transform;
-            ele2.style.transform = temp;
-            window.requestAnimationFrame(()=>{
-                setTimeout(() => {
-                    container.insertBefore(ele2, ele1);//changes the position of ele1 and ele2 in the container
-                    resolve();
-                }, 250);
-            });
+            //console.log('swap call on ',ele1,ele2);
+            var tempHeight = ele1.style.height;
+            var tempVal = ele1.childNodes[0].innerHTML;
+            ele1.style.height = ele2.style.height;
+            ele1.childNodes[0].innerHTML = ele2.childNodes[0].innerHTML;
+            ele2.style.height = tempHeight;
+            ele2.childNodes[0].innerHTML = tempVal;
+            setTimeout(() => {
+                resolve();
+            }, 250);
         });
     }
     function emptyArray(){
@@ -44,42 +45,32 @@
         
     }
     async function selectionSortVisualization(delay=300){
-        //!ERROR
-        //problem in swapping elements in selection sort
-
-        // console.log('selection sort called');
-        // if(emptyArray())
-        //     return;
+        if(emptyArray())
+            return;
         
-        // let blocks = document.querySelectorAll('.block');
-        // for(let i=0;i<blocks.length;i++){
-            
-        //     let arr =[]
-        //     for(let block of blocks){
-        //         arr.push(Number(block.childNodes[0].innerHTML));
-        //     }
-        //     console.log(i,'th array',arr);
-        //     let maxVal = Number(blocks[0].childNodes[0].innerHTML);
-        //     let maxValBlock = blocks[0];
-        //     for(let j=0;j<blocks.length - i;j++){
-        //         blocks[j].style.backgroundColor = colorProcessing;
-        //         await new Promise((resolve)=>{
-        //             setTimeout(()=>{
-        //                 resolve();
-        //             },delay);
-        //         });
-        //         let curVal = Number(blocks[j].childNodes[0].innerHTML);
-        //         let curBlock = blocks[j];
-        //         if(curVal>maxVal){
-        //             maxVal=curVal;
-        //             maxValBlock=curBlock;
-        //         }
-        //         blocks[j].style.backgroundColor = colorDefault;
-        //     }
-        //     await swap(maxValBlock,blocks[blocks.length-i-1]);
-        //     blocks = document.querySelectorAll('.block');
-        //     maxValBlock.style.backgroundColor = colorProcessed;
-        // }
+        let blocks = document.querySelectorAll('.block');
+        for(let i=0;i<blocks.length;i++){
+            let maxVal = Number(blocks[0].childNodes[0].innerHTML);
+            let maxValBlock = blocks[0];
+            for(let j=0;j<blocks.length - i;j++){
+                blocks[j].style.backgroundColor = colorProcessing;
+                await new Promise((resolve)=>{
+                    setTimeout(()=>{
+                        resolve();
+                    },delay);
+                });
+                let curVal = Number(blocks[j].childNodes[0].innerHTML);
+                let curBlock = blocks[j];
+                if(curVal>maxVal){
+                    maxVal=curVal;
+                    maxValBlock=curBlock;
+                }
+                blocks[j].style.backgroundColor = colorDefault;
+            }
+            await swap(maxValBlock,blocks[blocks.length-i-1]);
+            //blocks = document.querySelectorAll('.block');
+            blocks[blocks.length-i-1].style.backgroundColor = colorProcessed;
+        }
     }
     async function bubbleSortVisualization(delay = 100){
         if(emptyArray())
@@ -98,8 +89,8 @@
                 let value1 = Number(blocks[j].childNodes[0].innerHTML);
                 let value2 = Number(blocks[j+1].childNodes[0].innerHTML);
                 if(value1>value2){
-                    await swapBubble(blocks[j],blocks[j+1]);
-                    blocks = document.querySelectorAll('.block');
+                    await swap(blocks[j],blocks[j+1]);
+                    //blocks = document.querySelectorAll('.block');
                 }
                 blocks[j].style.backgroundColor = colorDefault;
                 blocks[j+1].style.backgroundColor = colorDefault;
